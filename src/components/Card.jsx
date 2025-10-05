@@ -31,6 +31,10 @@ function Card() {
     e.preventDefault();
     if (!newIncome) return;
     const amount = Number(newIncome);
+    if (amount <= 0) {
+    setNewIncome(""); 
+    return;
+  }
     const transaction = {
       type: "income",
       category: "Income",
@@ -43,6 +47,7 @@ function Card() {
     saveTransaction(transaction);
     setNewIncome("");
   };
+
 
   const addExpenses = (e) => {
     e.preventDefault();
@@ -84,7 +89,7 @@ function Card() {
     >
       <h2>EXPENSE TRACKER</h2>
 
-      {/* Balance */}
+     
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div
           style={{
@@ -101,24 +106,24 @@ function Card() {
             borderRadius: "10px",
           }}
         >
-          <h3>Your Balance: ${remainingBalance}</h3>
+          <h3>Available Balance: ${remainingBalance}</h3>
         </div>
       </div>
 
-      {/* Income + Expense */}
+     
       <div
         style={{
           display: "flex",
           justifyContent: "space-around",
-          flexWrap: "wrap", // 👈 ensures responsiveness
+          flexWrap: "wrap", 
           marginTop: "20px",
           gap: "10px",
         }}
       >
-        {/* Income */}
+       
         <div
           style={{
-            flex: "1 1 300px", // 👈 flex responsive
+            flex: "1 1 300px",
             minWidth: "250px",
             height: "auto",
             padding: "10px",
@@ -153,7 +158,7 @@ function Card() {
           </button>
         </div>
 
-        {/* Expense */}
+        
         <div
           style={{
             flex: "1 1 300px",
@@ -183,7 +188,7 @@ function Card() {
         </div>
       </div>
 
-      {/* Add New Transaction */}
+      
       <h3 style={{ marginTop: "30px" }}>ADD NEW TRANSACTION</h3>
       <form
         style={{
